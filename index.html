@@ -5,249 +5,575 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101f50">
-<meta name="description" content="Ro-CityZ - Cursuri și teste de pregătire pentru persoanele care doresc să obțină cetățenia română.">
-<title>Ro-CityZ | Pregătește-ți viitorul în România</title>
+<meta name="description" content="Ro-CityZ - Platformă educațională cu lecții și teste de pregătire pentru cetățenia română.">
+<title>Ro-CityZ | Educație și pregătire pentru cetățenia română</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #101f50;
+  --navy: #102052;
+  --navy2: #172d66;
   --orange: #f07819;
+  --orange-light: #fff0e3;
   --white: #ffffff;
   --light: #f4f6fb;
-  --text: #26334d;
+  --text: #29354e;
+  --muted: #778198;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: var(--text);
-  background: var(--white);
-  line-height: 1.6;
+  overflow-x: hidden;
+  background: white;
 }
 
+a { text-decoration: none; }
+
+.container {
+  width: min(1160px, 88%);
+  margin: auto;
+}
+
+.orange { color: var(--orange); }
+
+/* HEADER */
+
 header {
-  background: white;
-  padding: 15px 7%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 3px 20px rgba(16,32,82,.07);
+}
+
+.navbar {
+  min-height: 82px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 15px #101f5010;
-}
-
-.logo {
-  font-size: 27px;
-  font-weight: 800;
-  color: var(--navy);
-  text-decoration: none;
-}
-
-.logo span {
-  color: var(--orange);
-}
-
-nav {
-  display: flex;
   gap: 25px;
-  align-items: center;
 }
 
-nav a {
-  color: var(--navy);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: var(--orange);
-}
-
-.hero {
-  min-height: 580px;
-  background: linear-gradient(120deg, #101f50, #1d3475);
+.brand {
   display: flex;
   align-items: center;
-  padding: 80px 10%;
-  color: white;
+  gap: 10px;
 }
 
-.hero-content {
-  max-width: 750px;
+.brand img {
+  width: 66px;
+  height: 60px;
+  object-fit: contain;
 }
 
-.hero-label {
-  color: #ffad60;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: bold;
+.brand-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 25px;
+  color: var(--navy);
+}
+
+.brand-name span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.nav-links a {
   font-size: 13px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 6vw, 65px);
-  line-height: 1.12;
-  margin: 22px 0;
-}
-
-.hero h1 span {
-  color: var(--orange);
-}
-
-.hero p {
-  font-size: 18px;
-  color: #e0e6f5;
-  max-width: 620px;
-  margin-bottom: 30px;
-}
-
-.btn {
-  display: inline-block;
-  background: var(--orange);
-  color: white;
-  text-decoration: none;
-  padding: 14px 27px;
-  border-radius: 7px;
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--navy);
   transition: .25s;
 }
 
-.btn:hover {
-  background: #dc6710;
-  transform: translateY(-3px);
-}
+.nav-links a:hover { color: var(--orange); }
 
-section {
-  padding: 85px 9%;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-title h2 {
-  font-size: 35px;
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
   color: var(--navy);
+  font-size: 27px;
+  cursor: pointer;
 }
 
-.section-title p {
-  color: #778198;
-  margin-top: 10px;
+/* HERO */
+
+.hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(240,120,25,.18), transparent 28%),
+    linear-gradient(120deg, #0b1945, #172e69);
+  color: white;
+  padding: 105px 0 115px;
+  position: relative;
+  overflow: hidden;
 }
 
-.about {
-  background: var(--light);
+.hero:after {
+  content: "";
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 50%;
+  right: -130px;
+  bottom: -260px;
+  box-shadow: 0 0 0 45px rgba(255,255,255,.025),
+              0 0 0 90px rgba(255,255,255,.02);
 }
 
-.about-content {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
-  font-size: 17px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 790px;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+.eyebrow {
+  color: #ffac65;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-block;
+  margin-bottom: 22px;
 }
 
-.card {
-  background: white;
-  padding: 32px 25px;
-  border-radius: 13px;
-  box-shadow: 0 5px 25px #101f5010;
-  border-bottom: 4px solid var(--orange);
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 25px;
+}
+
+.hero h1 span { color: var(--orange); }
+
+.hero p {
+  color: #d9e0f0;
+  font-size: 18px;
+  max-width: 650px;
+  line-height: 1.9;
+  margin-bottom: 34px;
+}
+
+.hero-button {
+  display: inline-flex;
+  padding: 15px 27px;
+  border-radius: 7px;
+  background: var(--orange);
+  color: white;
+  font-weight: 800;
   transition: .3s;
 }
 
-.card:hover {
-  transform: translateY(-7px);
+.hero-button:hover {
+  transform: translateY(-4px);
+  background: #ff8b32;
+  box-shadow: 0 10px 25px #0003;
 }
 
-.card .icon {
-  font-size: 38px;
-  margin-bottom: 15px;
+.hero-note {
+  margin-top: 23px;
+  font-size: 12px;
+  color: #aebbd8;
 }
 
-.card h3 {
+/* GENERAL */
+
+section { scroll-margin-top: 85px; }
+
+.section {
+  padding: 95px 0;
+}
+
+.section-label {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+
+.section-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(29px, 4vw, 43px);
   color: var(--navy);
-  margin-bottom: 12px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
 }
 
-.process {
-  background: var(--light);
+.section-description {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 680px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  text-align: center;
+.center { text-align: center; }
+
+.center .section-description {
+  margin: auto;
 }
 
-.step {
+.section-header {
+  margin-bottom: 48px;
+}
+
+/* ABOUT */
+
+.about {
   background: white;
-  padding: 30px;
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.about-text p {
+  line-height: 1.95;
+  color: #68748c;
+  margin-bottom: 17px;
+  font-size: 15px;
+}
+
+.about-visual {
+  background: var(--light);
+  min-height: 370px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-visual:before {
+  content: "";
+  width: 260px;
+  height: 260px;
+  border: 2px solid #dce2ef;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.about-logo {
+  width: 80%;
+  max-width: 320px;
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: multiply;
   border-radius: 12px;
 }
 
-.number {
-  width: 48px;
-  height: 48px;
+.about-caption {
+  position: absolute;
+  bottom: 22px;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+/* ABOUT MISSION */
+
+.mission {
+  background: var(--navy);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission:after {
+  content: "";
+  position: absolute;
+  right: -100px;
+  top: -180px;
+  width: 450px;
+  height: 450px;
+  border: 1px solid #ffffff12;
+  border-radius: 50%;
+  box-shadow: 0 0 0 50px #ffffff08,
+              0 0 0 100px #ffffff05;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.mission .section-heading { color: white; }
+
+.mission p {
+  color: #c7d0e5;
+  line-height: 1.95;
+  margin-bottom: 17px;
+}
+
+.mission-box {
+  padding: 37px;
+  border: 1px solid #ffffff20;
+  background: #ffffff0b;
+  border-radius: 16px;
+}
+
+.mission-box h3 {
+  color: #ffad65;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.mission-box p { margin: 0; }
+
+/* VALUES */
+
+.values {
+  background: var(--light);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.value-card {
+  padding: 32px 27px;
+  background: white;
+  border-radius: 13px;
+  border: 1px solid #e9edf5;
+  transition: .3s;
+}
+
+.value-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px #10205212;
+}
+
+.value-icon {
+  width: 54px;
+  height: 54px;
+  background: var(--orange-light);
   display: grid;
   place-items: center;
-  background: var(--navy);
-  color: white;
-  border-radius: 50%;
-  margin: 0 auto 15px;
-  font-weight: bold;
+  font-size: 25px;
+  border-radius: 13px;
+  margin-bottom: 22px;
 }
 
-.social {
-  text-align: center;
-  background: var(--navy);
-  color: white;
-}
-
-.social h2 {
-  font-size: 34px;
+.value-card h3 {
+  color: var(--navy);
+  font-size: 18px;
   margin-bottom: 12px;
 }
 
-.social p {
-  color: #d5dced;
-  margin-bottom: 30px;
+.value-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* WHY US */
+
+.why {
+  background: white;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.why-item {
+  display: flex;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 12px;
+  background: #f8f9fc;
+}
+
+.check {
+  background: var(--orange-light);
+  color: var(--orange);
+  min-width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.why-item h3 {
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+
+.why-item p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* COURSES */
+
+.courses {
+  background: #f2f4f9;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 23px;
+}
+
+.course-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px #1020520b;
+  transition: .3s;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px #10205215;
+}
+
+.course-top {
+  padding: 30px;
+  background: var(--navy);
+  color: white;
+  font-size: 36px;
+}
+
+.course-card:nth-child(2) .course-top {
+  background: var(--orange);
+}
+
+.course-card:nth-child(3) .course-top {
+  background: #243d7a;
+}
+
+.course-body { padding: 27px; }
+
+.course-body h3 {
+  color: var(--navy);
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.course-body p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* STEPS */
+
+.steps {
+  background: white;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.step {
+  border-radius: 15px;
+  background: var(--light);
+  padding: 33px 25px;
+  text-align: center;
+}
+
+.step-number {
+  background: var(--navy);
+  color: white;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.step h3 {
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* SOCIAL */
+
+.social {
+  background: linear-gradient(120deg, #0b1945, #192f6b);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.social .section-heading { color: white; }
+
+.social .section-description {
+  color: #c9d3e9;
+  margin: auto;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 22px;
+  margin-top: 35px;
 }
 
 .social-icons a {
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
+  width: 65px;
+  height: 65px;
+  background: white;
+  border-radius: 17px;
   display: grid;
   place-items: center;
-  background: white;
-  transition: .25s;
+  transition: .3s;
 }
 
 .social-icons a:hover {
-  transform: translateY(-6px);
-  background: #ffead9;
+  transform: translateY(-8px) rotate(-3deg);
+  box-shadow: 0 10px 30px #0004;
 }
 
 .social-icons svg {
@@ -255,67 +581,207 @@ section {
   height: 30px;
 }
 
+/* CONTACT */
+
 .contact {
   background: var(--light);
 }
 
-.contact-content {
-  max-width: 650px;
-  margin: auto;
-  text-align: center;
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.contact-text p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin-top: 12px;
+}
+
+.contact-info {
+  display: grid;
+  gap: 15px;
 }
 
 .contact-item {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  padding: 22px;
   background: white;
-  margin: 15px 0;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 17px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px #10205208;
 }
 
-.contact-item strong {
-  color: var(--navy);
+.contact-icon {
+  width: 47px;
+  height: 47px;
+  background: var(--orange-light);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
 }
+
+.contact-item h4 {
+  color: var(--navy);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.contact-item a {
+  color: #59657c;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* FOOTER */
 
 footer {
-  background: #0a1538;
+  background: #091637;
   color: white;
+  padding: 55px 0 25px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 35px;
+}
+
+.footer-brand {
+  max-width: 380px;
+}
+
+.footer-brand h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.footer-brand h2 span { color: var(--orange); }
+
+.footer-brand p {
+  color: #aebbd6;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.footer-links h4 {
+  margin-bottom: 15px;
+  color: #ffad65;
+}
+
+.footer-links a {
+  display: block;
+  color: #bdc8df;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.footer-links a:hover { color: white; }
+
+.footer-bottom {
+  border-top: 1px solid #ffffff1c;
+  padding-top: 23px;
   text-align: center;
-  padding: 30px 15px;
+  color: #8f9cba;
+  font-size: 12px;
 }
 
-footer span {
-  color: var(--orange);
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .7s ease, transform .7s ease;
 }
 
-@media(max-width: 800px) {
-  header {
-    flex-direction: column;
-    gap: 12px;
-  }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  nav {
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+  .nav-links {
     gap: 13px;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
-  nav a {
-    font-size: 12px;
+  .nav-links a { font-size: 12px; }
+
+  .about-intro,
+  .mission-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
   }
 
-  .hero {
-    min-height: 500px;
-    padding: 65px 7%;
+  .values-grid,
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .cards, .steps {
+  .mission-box { padding: 27px; }
+}
+
+@media(max-width: 650px) {
+  .navbar { min-height: 72px; }
+
+  .brand img {
+    width: 51px;
+    height: 49px;
+  }
+
+  .brand-name { font-size: 21px; }
+
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 6%;
+    box-shadow: 0 10px 20px #10205212;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .nav-links a { font-size: 14px; }
+
+  .hero { padding: 75px 0 85px; }
+
+  .hero h1 { letter-spacing: -1px; }
+
+  .hero p { font-size: 15px; }
+
+  .section { padding: 70px 0; }
+
+  .values-grid,
+  .course-grid,
+  .steps-grid,
+  .why-grid {
     grid-template-columns: 1fr;
   }
 
-  section {
-    padding: 65px 7%;
+  .about-visual { min-height: 290px; }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 30px;
   }
+
+  .contact-item a { font-size: 12px; }
 }
 </style>
 </head>
@@ -323,186 +789,539 @@ footer span {
 <body>
 
 <header>
-  <a href="#" class="logo">Ro-City<span>Z</span></a>
+  <div class="container navbar">
+    <a href="#acasa" class="brand">
+      <img src="logo.jpeg" alt="Ro-CityZ logo">
+      <div class="brand-name">Ro-City<span>Z</span></div>
+    </a>
 
-  <nav>
-    <a href="#acasa">Acasă</a>
-    <a href="#despre">Despre noi</a>
-    <a href="#servicii">Cursuri și teste</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#acasa">Acasă</a>
+      <a href="#despre">Despre noi</a>
+      <a href="#misiune">Misiunea noastră</a>
+      <a href="#cursuri">Cursuri și teste</a>
+      <a href="#social">Comunitate</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main>
+
+<!-- HERO -->
+
 <section class="hero" id="acasa">
-  <div class="hero-content">
-    <div class="hero-label">Bine ai venit la Ro-CityZ</div>
+  <div class="container">
+    <div class="hero-content reveal">
+      <span class="eyebrow">Bun venit la Ro-CityZ</span>
 
-    <h1>Viitorul tău în România <span>începe aici.</span></h1>
+      <h1>
+        Descoperă România.<br>
+        Pregătește-ți <span>viitorul.</span>
+      </h1>
 
-    <p>
-      Descoperă cursuri, lecții și teste de pregătire
-      concepute pentru persoanele care își doresc
-      să obțină cetățenia română.
+      <p>
+        Un proiect educațional dedicat persoanelor care își doresc
+        să cunoască mai bine România și să se pregătească pentru
+        obținerea cetățeniei române.
+      </p>
+
+      <a href="#despre" class="hero-button">Descoperă povestea noastră →</a>
+
+      <div class="hero-note">
+        Cunoaștere • Educație • Pregătire
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESPRE NOI -->
+
+<section class="section about" id="despre">
+  <div class="container">
+    <div class="about-intro">
+
+      <div class="about-text reveal">
+        <div class="section-label">Povestea noastră</div>
+
+        <h2 class="section-heading">
+          Cine suntem și de ce există Ro-CityZ?
+        </h2>
+
+        <p>
+          Ro-CityZ este un proiect educațional creat pentru
+          persoanele care își doresc să facă un pas important
+          în relația lor cu România: pregătirea pentru dobândirea
+          cetățeniei române.
+        </p>
+
+        <p>
+          Știm că apropierea de o nouă țară presupune mai mult
+          decât parcurgerea unor informații. Înseamnă să descoperi
+          istoria, cultura, tradițiile, limba și valorile unei
+          societăți.
+        </p>
+
+        <p>
+          De aceea, ne propunem să aducem toate aceste informații
+          într-un format educațional organizat, ușor de parcurs
+          și adaptat nevoilor celor care învață.
+        </p>
+
+        <p>
+          Prin cursuri, lecții și teste de pregătire, Ro-CityZ
+          urmărește să ofere un sprijin în procesul de învățare
+          și consolidare a cunoștințelor despre România.
+        </p>
+      </div>
+
+      <div class="about-visual reveal">
+        <img src="logo.jpeg" alt="Logo Ro-CityZ" class="about-logo">
+        <div class="about-caption">Educație pentru un nou început</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MISIUNE -->
+
+<section class="section mission" id="misiune">
+  <div class="container mission-grid">
+
+    <div class="reveal">
+      <div class="section-label">Misiunea noastră</div>
+
+      <h2 class="section-heading">
+        Învățarea trebuie să fie accesibilă tuturor.
+      </h2>
+
+      <p>
+        Misiunea Ro-CityZ este să contribuie la o experiență
+        de pregătire mai clară și mai bine organizată pentru
+        persoanele care urmăresc dobândirea cetățeniei române.
+      </p>
+
+      <p>
+        Ne dorim ca informațiile importante să poată fi
+        descoperite într-un mod logic, progresiv și ușor
+        de înțeles, indiferent de punctul din care începe
+        fiecare persoană.
+      </p>
+    </div>
+
+    <div class="mission-box reveal">
+      <h3>Viziunea Ro-CityZ</h3>
+
+      <p>
+        Ne dorim să construim un spațiu educațional în care
+        oamenii să poată învăța în ritmul lor, să își testeze
+        cunoștințele și să descopere mai multe despre România.
+        Credem în puterea educației de a transforma informația
+        într-un instrument real de pregătire.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALORI -->
+
+<section class="section values">
+  <div class="container">
+
+    <div class="section-header center reveal">
+      <div class="section-label">Principiile noastre</div>
+      <h2 class="section-heading">Valorile care ne definesc</h2>
+      <p class="section-description">
+        Fiecare etapă a proiectului este construită în jurul
+        unor principii care pun accentul pe educație și
+        experiența celor care învață.
+      </p>
+    </div>
+
+    <div class="values-grid">
+
+      <article class="value-card reveal">
+        <div class="value-icon">📖</div>
+        <h3>Educație</h3>
+        <p>
+          Punem accentul pe informații educaționale organizate
+          și prezentate într-un mod ușor de urmărit.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">🤝</div>
+        <h3>Accesibilitate</h3>
+        <p>
+          Ne dorim ca resursele de pregătire să fie mai ușor
+          de descoperit și utilizat de către publicul nostru.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">🎯</div>
+        <h3>Progres</h3>
+        <p>
+          Încurajăm învățarea pas cu pas și verificarea
+          periodică a informațiilor acumulate.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">🌍</div>
+        <h3>Integrare</h3>
+        <p>
+          Încurajăm cunoașterea limbii, istoriei și culturii
+          României ca parte a procesului de integrare.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">💡</div>
+        <h3>Claritate</h3>
+        <p>
+          Ne propunem să prezentăm informațiile într-un
+          format logic, structurat și intuitiv.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">📚</div>
+        <h3>Dezvoltare</h3>
+        <p>
+          Credem într-un proces continuu de învățare,
+          aprofundare și îmbunătățire a cunoștințelor.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- DE CE ROCITYZ -->
+
+<section class="section why">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-label">Abordarea noastră</div>
+      <h2 class="section-heading">Pregătire cu un scop clar</h2>
+      <p class="section-description">
+        Procesul de învățare poate deveni mai ușor atunci când
+        informațiile sunt organizate și există posibilitatea
+        de a verifica ceea ce ai învățat.
+      </p>
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-item reveal">
+        <div class="check">✓</div>
+        <div>
+          <h3>Informații structurate</h3>
+          <p>Materialele sunt organizate pentru a facilita parcurgerea treptată a subiectelor.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">✓</div>
+        <div>
+          <h3>Învățare în ritm propriu</h3>
+          <p>Fiecare persoană își poate organiza procesul de studiu în funcție de propriul ritm.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">✓</div>
+        <div>
+          <h3>Exercițiu și verificare</h3>
+          <p>Testele oferă posibilitatea de a verifica și consolida informațiile învățate.</p>
+        </div>
+      </div>
+
+      <div class="why-item reveal">
+        <div class="check">✓</div>
+        <div>
+          <h3>O experiență intuitivă</h3>
+          <p>Ne dorim o experiență digitală simplă și ușor de urmărit.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURSURI -->
+
+<section class="section courses" id="cursuri">
+  <div class="container">
+
+    <div class="section-header center reveal">
+      <div class="section-label">Resurse educaționale</div>
+      <h2 class="section-heading">Ce poți descoperi la Ro-CityZ?</h2>
+      <p class="section-description">
+        Resurse concepute pentru a susține procesul de
+        pregătire și aprofundare a cunoștințelor despre România.
+      </p>
+    </div>
+
+    <div class="course-grid">
+
+      <article class="course-card reveal">
+        <div class="course-top">📚</div>
+        <div class="course-body">
+          <h3>Cursuri și lecții</h3>
+          <p>
+            Descoperă materiale educaționale despre România,
+            organizate pe teme și subiecte relevante pentru
+            procesul de pregătire.
+          </p>
+        </div>
+      </article>
+
+      <article class="course-card reveal">
+        <div class="course-top">✍️</div>
+        <div class="course-body">
+          <h3>Teste și exerciții</h3>
+          <p>
+            Exersează prin întrebări și teste de verificare.
+            Identifică subiectele care necesită mai multă
+            atenție și aprofundare.
+          </p>
+        </div>
+      </article>
+
+      <article class="course-card reveal">
+        <div class="course-top">🏛️</div>
+        <div class="course-body">
+          <h3>Cunoașterea României</h3>
+          <p>
+            Aprofundează informații despre istoria,
+            geografia, cultura, instituțiile și tradițiile
+            României.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUM FUNCTIONEAZA -->
+
+<section class="section steps">
+  <div class="container">
+
+    <div class="section-header center reveal">
+      <div class="section-label">Procesul de învățare</div>
+      <h2 class="section-heading">Fiecare pas contează</h2>
+      <p class="section-description">
+        Pregătirea este un proces care presupune consecvență,
+        exercițiu și dorința de a acumula informații noi.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step reveal">
+        <div class="step-number">01</div>
+        <h3>Descoperă</h3>
+        <p>
+          Explorează materialele educaționale și familiarizează-te
+          cu subiectele importante.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-number">02</div>
+        <h3>Învață și exersează</h3>
+        <p>
+          Parcurge lecțiile și folosește exercițiile pentru
+          a aprofunda informațiile.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-number">03</div>
+        <h3>Verifică progresul</h3>
+        <p>
+          Rezolvă teste și urmărește ce subiecte mai trebuie
+          să aprofundezi.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+
+<section class="section social" id="social">
+  <div class="container reveal">
+
+    <div class="section-label">Comunitatea Ro-CityZ</div>
+    <h2 class="section-heading">Rămâi conectat cu noi.</h2>
+
+    <p class="section-description">
+      Urmărește-ne pe rețelele sociale pentru materiale
+      educaționale, informații utile, videoclipuri și
+      noutăți din comunitatea Ro-CityZ.
     </p>
 
-    <a href="#servicii" class="btn">Descoperă cursurile</a>
-  </div>
-</section>
+    <div class="social-icons">
 
-<section class="about" id="despre">
-  <div class="section-title">
-    <h2>Despre Ro-CityZ</h2>
-    <p>Un pas mai aproape de viitorul tău în România.</p>
-  </div>
-
-  <div class="about-content">
-    <p>
-      Ro-CityZ este un proiect educațional dedicat
-      persoanelor care doresc să se pregătească pentru
-      procesul de dobândire a cetățeniei române.
-    </p>
-    <br>
-    <p>
-      Prin intermediul cursurilor, materialelor educaționale
-      și testelor de antrenament, ne propunem să facem
-      procesul de învățare mai accesibil, organizat și ușor
-      de parcurs.
-    </p>
-  </div>
-</section>
-
-<section id="servicii">
-  <div class="section-title">
-    <h2>Ce oferă Ro-CityZ?</h2>
-    <p>Resurse educaționale pentru o pregătire mai bună.</p>
-  </div>
-
-  <div class="cards">
-    <article class="card">
-      <div class="icon">📚</div>
-      <h3>Cursuri structurate</h3>
-      <p>
-        Materiale și lecții organizate pentru
-        aprofundarea cunoștințelor despre România.
-      </p>
-    </article>
-
-    <article class="card">
-      <div class="icon">📝</div>
-      <h3>Teste de pregătire</h3>
-      <p>
-        Exersează prin întrebări și teste care te ajută
-        să îți verifici nivelul de cunoștințe.
-      </p>
-    </article>
-
-    <article class="card">
-      <div class="icon">🎓</div>
-      <h3>Învățare progresivă</h3>
-      <p>
-        Parcurge informațiile pas cu pas și consolidează
-        ceea ce ai învățat prin exercițiu.
-      </p>
-    </article>
-  </div>
-</section>
-
-<section class="process">
-  <div class="section-title">
-    <h2>Pregătirea începe cu trei pași</h2>
-    <p>Un proces de învățare simplu și organizat.</p>
-  </div>
-
-  <div class="steps">
-    <div class="step">
-      <div class="number">1</div>
-      <h3>Învață</h3>
-      <p>Descoperă materialele și lecțiile educaționale.</p>
-    </div>
-
-    <div class="step">
-      <div class="number">2</div>
-      <h3>Exersează</h3>
-      <p>Rezolvă teste și verifică informațiile acumulate.</p>
-    </div>
-
-    <div class="step">
-      <div class="number">3</div>
-      <h3>Progresează</h3>
-      <p>Continuă pregătirea și consolidează-ți cunoștințele.</p>
-    </div>
-  </div>
-</section>
-
-<section class="social">
-  <h2>Urmărește Ro-CityZ</h2>
-  <p>Rămâi conectat la materialele și noutățile noastre.</p>
-
-  <div class="social-icons">
-
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/rocityz/"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Instagram Ro-CityZ">
-      <svg viewBox="0 0 24 24" fill="none"
-           stroke="#E1306C" stroke-width="2">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="#E1306C"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@rocityz"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="TikTok Ro-CityZ">
-      <svg viewBox="0 0 24 24" fill="#111111">
-        <path d="M19.6 7.1a5.5 5.5 0 0 1-4.1-2V15a6.3 6.3 0 1 1-6.3-6.3c.4 0 .8 0 1.2.1v3.5a3 3 0 1 0 1.6 2.7V2h3.5c.3 2.1 1.8 3.7 4.1 4v1.1z"/>
-      </svg>
-    </a>
-
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@RocityZ"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="YouTube Ro-CityZ">
-      <svg viewBox="0 0 24 24" fill="#E62117">
-        <path d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9 3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2 31 31 0 0 0 .5-4.9 31 31 0 0 0-.5-4.9zM9.6 15.5v-7l6 3.5z"/>
-      </svg>
-    </a>
-
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="section-title">
-    <h2>Hai să vorbim!</h2>
-    <p>Pentru informații și întrebări, ne poți contacta.</p>
-  </div>
-
-  <div class="contact-content">
-    <div class="contact-item">
-      <strong>Telefon</strong><br>
-      <a href="tel:0746286850">0746286850</a>
-    </div>
-
-    <div class="contact-item">
-      <strong>E-mail</strong><br>
-      <a href="mailto:simona.gouraud2006@gmail.com">
-        simona.gouraud2006@gmail.com
+      <!-- INSTAGRAM -->
+      <a href="https://www.instagram.com/rocityz/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="#E1306C" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#E1306C"/>
+        </svg>
       </a>
+
+      <!-- TIKTOK -->
+      <a href="https://www.tiktok.com/@rocityz"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="#111">
+          <path d="M19.6 7.1a5.5 5.5 0 0 1-4.1-2V15a6.3 6.3 0 1 1-6.3-6.3c.4 0 .8 0 1.2.1v3.5a3 3 0 1 0 1.6 2.7V2h3.5c.3 2.1 1.8 3.7 4.1 4v1.1z"/>
+        </svg>
+      </a>
+
+      <!-- YOUTUBE -->
+      <a href="https://www.youtube.com/@RocityZ"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="#E62117">
+          <path d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9 3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2 31 31 0 0 0 .5-4.9 31 31 0 0 0-.5-4.9zM9.6 15.5v-7l6 3.5z"/>
+        </svg>
+      </a>
+
     </div>
   </div>
 </section>
+
+<!-- CONTACT -->
+
+<section class="section contact" id="contact">
+  <div class="container contact-grid">
+
+    <div class="contact-text reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-heading">
+        Suntem aici pentru tine.
+      </h2>
+      <p>
+        Ai întrebări despre Ro-CityZ sau despre resursele
+        educaționale disponibile? Ne poți contacta folosind
+        datele de mai jos.
+      </p>
+    </div>
+
+    <div class="contact-info reveal">
+
+      <div class="contact-item">
+        <div class="contact-icon">☎</div>
+        <div>
+          <h4>Telefon</h4>
+          <a href="tel:0746286850">0746286850</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h4>E-mail</h4>
+          <a href="mailto:simona.gouraud2006@gmail.com">
+            simona.gouraud2006@gmail.com
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 </main>
 
+<!-- FOOTER -->
+
 <footer>
-  <h2>Ro-City<span>Z</span></h2>
-  <p>Educație, pregătire și un nou început în România.</p>
-  <br>
-  <p>© 2026 Ro-CityZ. Toate drepturile rezervate.</p>
+  <div class="container">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <h2>Ro-City<span>Z</span></h2>
+        <p>
+          Un proiect educațional dedicat celor care doresc
+          să descopere România și să se pregătească pentru
+          obținerea cetățeniei române.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigare</h4>
+        <a href="#acasa">Acasă</a>
+        <a href="#despre">Despre noi</a>
+        <a href="#misiune">Misiunea noastră</a>
+        <a href="#cursuri">Cursuri și teste</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Social media</h4>
+        <a href="https://www.instagram.com/rocityz/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@rocityz" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.youtube.com/@RocityZ" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Ro-CityZ. Toate drepturile rezervate.
+    </div>
+
+  </div>
 </footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  menuBtn.textContent =
+    navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
 
 </body>
 </html>
-
